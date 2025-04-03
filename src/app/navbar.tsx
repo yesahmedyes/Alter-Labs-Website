@@ -1,4 +1,5 @@
 import { HambergerMenu } from "iconsax-react";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -6,8 +7,8 @@ export default function Navbar() {
 
   return (
     <div className="mt-8 lg:mt-10 bg-black/95 w-11/12 lg:w-2/3 mx-auto rounded-3xl z-50 relative">
-      <div className="flex flex-row justify-between items-center px-8 py-4">
-        <div className="text-white text-sm font-medium">Alter Labs</div>
+      <div className="flex flex-row justify-between items-center px-8 py-3.5">
+        <Image src="/logo.png" alt="logo" width={100} height={100} />
 
         <div className="hidden md:flex flex-row items-center justify-center gap-8">
           <div className="text-white text-sm cursor-pointer hover:text-gray-300 transition-colors">Home</div>
