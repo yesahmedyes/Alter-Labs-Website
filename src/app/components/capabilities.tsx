@@ -79,8 +79,15 @@ const capabilities = [
 export default function Capabilities() {
   const [activeTab, setActiveTab] = useState("nlp");
 
+  const handleContactClick = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="py-8 md:py-16 bg-white w-full">
+    <section id="services" className="py-8 md:py-16 bg-white w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center text-center gap-4 md:gap-6">
           <h2 className="text-2xl md:text-3xl font-bold">Our AI Capabilities</h2>
@@ -98,7 +105,7 @@ export default function Capabilities() {
                   <button
                     key={cap.id}
                     onClick={() => setActiveTab(cap.id)}
-                    className={`py-3 md:py-4 px-1 border-b-2 font-medium text-xs md:text-sm whitespace-nowrap transition-colors ${
+                    className={`py-3 md:py-4 px-1 border-b-2 font-medium cursor-pointer text-xs md:text-sm whitespace-nowrap transition-colors ${
                       activeTab === cap.id
                         ? "border-black text-black"
                         : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
@@ -114,7 +121,7 @@ export default function Capabilities() {
           {capabilities.map((cap) => (
             <div
               key={cap.id}
-              className={`flex flex-col gap-5 md:gap-6 ${activeTab === cap.id ? "block lg:grid lg:grid-cols-2" : "hidden"}`}
+              className={`flex flex-col gap-5 md:gap-8 ${activeTab === cap.id ? "block lg:grid lg:grid-cols-2" : "hidden"}`}
             >
               <div className="bg-[#F8F9FF] p-6 md:p-8 rounded-lg">
                 <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">{cap.title}</h3>
@@ -138,7 +145,10 @@ export default function Capabilities() {
                   </ul>
                 )}
 
-                <button className="mt-6 md:mt-8 bg-black text-white px-4 md:px-6 py-2 text-sm md:text-base rounded-lg border hover:bg-transparent cursor-pointer hover:text-black transition-all">
+                <button
+                  onClick={handleContactClick}
+                  className="mt-6 md:mt-8 bg-black text-white px-4 md:px-6 py-2 text-sm md:text-base rounded-lg border hover:bg-transparent cursor-pointer hover:text-black transition-all"
+                >
                   Get Started Now
                 </button>
               </div>
@@ -149,7 +159,7 @@ export default function Capabilities() {
                       src={cap.image}
                       alt={`${cap.title} illustration`}
                       fill
-                      className="object-contain md:object-cover"
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                       priority={activeTab === cap.id}
                     />
